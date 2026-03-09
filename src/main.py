@@ -1,8 +1,8 @@
 import logging
 import sys
-from .Infrastructure.file_reader import read_lines
-from .Infrastructure.processing_logic import count_levels
-from .data_models.log_model import parse_line
+from src.Infrastructure.file_reader import read_lines
+from src.Infrastructure.processing_logic import count_levels
+from src.data_models.log_model import parse_line
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s | %(levelname)s | %(message)s"
@@ -10,11 +10,11 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 def main() :
-    if len(sys.argv) != 1 :
-        print("usage : python logtool.py ")
+    if len(sys.argv) != 2 :
+        print("usage : python -m src.main <logfile>")
         return 1
     
-    path = sys.argv[0]
+    path = sys.argv[1]
 
     try: 
         lines = read_lines(path)
@@ -30,3 +30,6 @@ def main() :
         return 1
 
     return 0
+
+if __name__ == "__main__":
+    sys.exit(main())
