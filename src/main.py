@@ -27,7 +27,7 @@ def main() :
 
             try:
                 entry=parse_line(line)
-                entries.append(entry)
+                counts = count_levels(entry)
             except ValueError:
                 bad_lines+=1
                 logger.warning("Malformed Lines")
@@ -35,7 +35,6 @@ def main() :
                 if bad_lines > MAX_BAD_LINES or bad_lines / total_lines > MAX_BAD_RATIO:
                     logger.error("corrupted dataset")
                     return 1
-        counts = count_levels(entries)
 
         logger.info("processing_complete")
         print(counts)
