@@ -1,7 +1,7 @@
 import logging
 import sys
 from src.Infrastructure.file_reader import read_lines
-from src.Infrastructure.processing_logic import count_levels
+from src.processing.processing_logic import count_levels
 from src.data_models.log_model import parse_line
 logging.basicConfig(
     level=logging.INFO,
